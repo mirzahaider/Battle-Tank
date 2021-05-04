@@ -26,7 +26,10 @@ public:
 private:
 	// Given ReticleDirection, do LineTrace and set OutLocation to a visible hitting object
 	bool GetLineTraceResult(FVector &OutLocation, FVector ReticleDirection);
-	   
+	
+	// Controlled Tank
+	ATank *Tank = nullptr;
+
 	float ReticleScreenPercentX = 0.5f;		// X position of Reticle as a percentage of screen
 	float ReticleScreenPercentY = 0.4f;		// Y position of Reticle as a percentage of screen
 	float FireRange = 100000.0f;

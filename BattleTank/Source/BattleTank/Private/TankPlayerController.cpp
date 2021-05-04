@@ -7,7 +7,7 @@ void ATankPlayerController::BeginPlay() {
 
 	Super::BeginPlay();
 
-	ATank *Tank = Cast<ATank>(GetPawn());
+	Tank = Cast<ATank>(GetPawn());
 
 	if (Tank) {
 		UE_LOG(LogTemp, Warning, TEXT("Tank Controlled: %s"), *Tank->GetName());
@@ -21,7 +21,8 @@ void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *GetReticleHitLocation().ToString())
+	// Tell Tank where to aim
+	Tank->AimAt(GetReticleHitLocation());
 }
 
 FVector ATankPlayerController::GetReticleHitLocation()
@@ -37,9 +38,8 @@ FVector ATankPlayerController::GetReticleHitLocation()
 
 	// line trace to get hitting object location
 	FVector OutLocation(0);
-	if (GetLineTraceResult(OutLocation, Direction)) {
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *OutLocation.ToString())
-	}
+	GetLineTraceResult(OutLocation, Direction);
+
 	return OutLocation;
 }
 

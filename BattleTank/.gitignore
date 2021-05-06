@@ -1,6 +1,9 @@
 # UE Starter Content (Project specific)
 */StarterContent/*
 
+# LocalDerivedDataCache that is otherwise located in Engine directory
+LocalDerivedDataCache/*
+
 # Visual Studio 2015 user specific files
 .vs/
 

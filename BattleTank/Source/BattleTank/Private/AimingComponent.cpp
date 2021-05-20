@@ -32,10 +32,20 @@ void UAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-void UAimingComponent::AimAt(FVector HitLocation)
+void UAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
 	FString TankName = GetOwner()->GetName();
 	FVector TankTowerPosition = TankTowerMesh->GetComponentLocation();
+	FVector OutLaunchVelocity;
+
+	if (UGameplayStatics::SuggestProjectileVelocity(
+		this,
+		OutLaunchVelocity,
+
+	)) {
+
+	}
+
 	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s from %s"), *TankName, *HitLocation.ToString(), *TankTowerPosition.ToString())
 }
 
